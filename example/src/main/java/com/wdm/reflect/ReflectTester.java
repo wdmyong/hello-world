@@ -10,7 +10,7 @@ public class ReflectTester {
     public Object copy(Object object) throws Exception {
         //Class classType = object.getClass();
         //Class classType = Class.forName("Customer");  // 报错，需要全局限定名
-        Class classType = Class.forName("com.wdm.reflect.Customer");
+        Class<?> classType = Class.forName("com.wdm.reflect.Customer");
         System.out.println("Class:\t" + classType.getName());
         Object objectCopy = classType.getConstructor(new Class[]{String.class}).newInstance(new Object[]{"wdm"});
         Field[] fields = classType.getDeclaredFields();

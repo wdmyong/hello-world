@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="knight" class="com.wdm.spr.BraveKnight">
+        <constructor-arg ref="quest" />
+        <constructor-arg ref="minstrel" />
+    </bean>
+    <bean id="quest" class="com.wdm.spr.FirstQuest" />
+    <bean id="minstrel" class="com.wdm.spr.Minstrel">
+        <constructor-arg value="#{T(System).out}" />
+    </bean>
+</beans>

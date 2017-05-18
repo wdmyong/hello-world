@@ -8,7 +8,7 @@ public class ArrayTester2 {
         int[] dims = new int[]{5, 10, 15};
         Object array = Array.newInstance(Long.TYPE, dims);
         Object arrayObj = Array.get(array, 0);
-        Class cls = arrayObj.getClass().getComponentType();
+        Class<?> cls = arrayObj.getClass().getComponentType();
         System.out.println(cls);
         arrayObj = Array.get(arrayObj, 5);
         Array.setLong(arrayObj, 10, 37);

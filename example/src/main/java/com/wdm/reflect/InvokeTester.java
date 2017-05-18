@@ -13,7 +13,7 @@ public class InvokeTester {
     }
 
     public static void main(String[] args) throws Exception {
-        Class classType = InvokeTester.class;
+        Class<?> classType = InvokeTester.class;
         Object invokerTester = classType.getConstructor(new Class[]{}).newInstance();
         Method addMethod = classType.getMethod("add",  new Class[]{int.class, int.class});
         Object result = addMethod.invoke(invokerTester, new Object[]{90, new Integer(200)});

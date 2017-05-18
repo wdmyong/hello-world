@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="knight" class="com.wdm.spr.BraveKnightAop">
+        <constructor-arg ref="quest" />
+    </bean>
+    <bean id="quest" class="com.wdm.spr.FirstQuest" />
+    <bean id="minstrel" class="com.wdm.spr.Minstrel">
+        <constructor-arg value="#{T(System).out}" />
+    </bean>
+    <aop:config>
+        <aop:aspect ref="minstrel">
+            <aop:pointcut id="embark" expression="execution(* *.embark(..))" />
+            <aop:before pointcut-ref="embark" method="beforeOperation" />
+            <aop:after pointcut-ref="embark" method="afterOperation" />
+        </aop:aspect>
+    </aop:config>
+</beans>
