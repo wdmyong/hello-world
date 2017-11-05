@@ -3,6 +3,8 @@ package com.wdm.test;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Test {
@@ -30,5 +32,15 @@ public class Test {
             return new Food(name);
         }
     }
-    
+    public static void main(String[] args) {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("a", "b");
+        f(map);
+        System.out.println(map.get("b"));
+    }
+
+    public static void f(Map<String, String> map) {
+        map.put("b", "c");
+    }
 }

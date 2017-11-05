@@ -1,6 +1,11 @@
 package com.wdm.example.model;
 
 import java.io.Serializable;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -21,6 +26,25 @@ public class User implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
     private Date modifyTime;
+
+    public User() {
+    }
+
+    public User(int id, String name, String account, String passwd, String mobile) {
+        this.id = id;
+        this.name = name;
+        this.account = account;
+        this.passwd = passwd;
+        this.mobile = mobile;
+        LocalTime localTime = LocalTime.now();
+        LocalDate localDate = LocalDate.now();
+        LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);
+        ZoneId zone = ZoneId.systemDefault();
+        Instant instant = localDateTime.atZone(zone).toInstant();
+        Date date = Date.from(instant);
+        this.createTime = date;
+        this.modifyTime = date;
+    }
 
     public int getId() {
         return id;
